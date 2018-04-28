@@ -7,11 +7,15 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+	<link href="//fonts.googleapis.com/css?family=Raleway&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	<title>Ecenin blogu
 	</title>
-	<h1>Hello!</h1>
-	<h2>Welcome!</h2>
 </head>
+
+<div class="page-header">
+    <h1><a href="/">Hello!</a></h1>
+    <h1><a href="/">Welcome!</a></h1>
+</div>
 
 <body>
 	<em>Now it works!</em>
@@ -19,18 +23,20 @@
 	<a href="https://www.google.com.tr">Here's a link for you. I am such a good person you guys!</a>
 </body>
 
-{% for post in posts %}
-	<div>
-		<p>published : {{post.published_date}}
-		</p>
-		<p>
-			author : {{post.author}}
-		</p>
-		<h1>
-			<a href="">{{ post.title }} </a>
-		</h1>
-		<p> {{post.text|linebreaksbr }}</p>
-	</div>
-	{% endfor %}
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 </html>
